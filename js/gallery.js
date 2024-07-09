@@ -66,6 +66,21 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   let ulHolder = document.getElementById("gallery");
+  let divHolder = document.querySelector(".gallery-div");
+  divHolder.addEventListener("click", (event) => {
+    const instance = basicLightbox.create(
+      `
+      <div class="modal">
+          <img src="${event.target.dataset.source}" class="modal-image" />
+      </div>
+      `,
+      {
+        closable: true,
+      }
+    );
+    instance.show();
+    console.log(instance);
+  });
 
   function createImages(img) {
     img.forEach(({ preview, original, description }) => {
